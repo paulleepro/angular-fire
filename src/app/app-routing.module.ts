@@ -7,6 +7,7 @@ import { CoursesListComponent } from './courses-list/courses-list.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CourseAddFormComponent } from './course-add-form/course-add-form.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
+import { EditCourseResolver } from './course-detail/edit-course.resolver';
 
 
 const routes: Routes = [
@@ -32,8 +33,8 @@ const routes: Routes = [
       },
 
     {
-      path: "courses/:id", component: CourseDetailComponent
-
+      path: "courses/:id", component: CourseDetailComponent,
+      resolve:{data : EditCourseResolver}
     },
 
 
