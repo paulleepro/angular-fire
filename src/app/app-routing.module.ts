@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { CourseAddFormComponent } from './course-add-form/course-add-form.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,11 @@ const routes: Routes = [
     path: "courses", //Angular 8 Notation with Promise
     component: CoursesListComponent
     },
+
+    {
+      path: "course-add", //Angular 8 Notation with Promise
+      component: CourseAddFormComponent
+      },
 
     // {
     //   path: "courses/:id", //Angular 8 Notation with Promise
