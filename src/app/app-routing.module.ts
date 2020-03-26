@@ -6,6 +6,7 @@ import { AboutComponent } from './about/about.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CourseAddFormComponent } from './course-add-form/course-add-form.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 
 const routes: Routes = [
@@ -30,10 +31,10 @@ const routes: Routes = [
       component: CourseAddFormComponent
       },
 
-    // {
-    //   path: "courses/:id", //Angular 8 Notation with Promise
-    //   component: CoursesDetailComponent
-    //   },
+    {
+      path: "courses/:id", component: CourseDetailComponent
+
+    },
 
 
 

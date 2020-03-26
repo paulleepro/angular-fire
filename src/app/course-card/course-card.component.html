@@ -7,6 +7,7 @@
     <img src="" />
     <div> Course description: {{course.description}}
     </div>
-    <button (click)="showDetail()">View Details</button>
+    <a class="btn btn-primary btn-lg" [routerLink]="['/courses', course.id]" role="button">View Course Details</a>
+
   </section>
 </article>

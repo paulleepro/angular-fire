@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { CourseService } from '../shared/course.service';
+import { Course } from '../shared/course';
 
 @Component({
   selector: 'app-course-detail',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./course-detail.component.css']
 })
 export class CourseDetailComponent implements OnInit {
+  course: Course;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute,
+    private service: CourseService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    const id = +this.activatedRoute.snapshot.paramMap.get('id');
+    this.service.getCourse(id).subscribe((course) => this.course = course);
   }
 
 }

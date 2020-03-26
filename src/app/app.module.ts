@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-import { CourseComponent } from './course/course.component';
+import { CourseCardComponent } from './course-card/course-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from '@angular/fire';
@@ -48,7 +48,7 @@ import { CourseAddFormComponent } from './course-add-form/course-add-form.compon
     LoginComponent,
     AboutComponent,
     LoadingSpinnerComponent,
-    CourseComponent,
+    CourseCardComponent,
     AddressFormComponent,
     FooterComponent,
     CourseDetailComponent,

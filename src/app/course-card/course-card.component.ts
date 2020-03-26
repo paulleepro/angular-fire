@@ -3,10 +3,10 @@ import { Course } from '../shared/course';
 
 @Component({
   selector: 'app-course',
-  templateUrl: './course.component.html',
-  styleUrls: ['./course.component.css']
+  templateUrl: './course-card.component.html',
+  styleUrls: ['./course-card.component.css']
 })
-export class CourseComponent implements OnInit {
+export class CourseCardComponent implements OnInit {
   @Input()
   course: Course;
 
