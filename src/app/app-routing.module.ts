@@ -24,6 +24,13 @@ const routes: Routes = [
     component: CoursesListComponent
     },
 
+    // {
+    //   path: "courses/:id", //Angular 8 Notation with Promise
+    //   component: CoursesDetailComponent
+    //   },
+
+
+
     { path: "**", component: NotfoundComponent, pathMatch: "full" }
 
 

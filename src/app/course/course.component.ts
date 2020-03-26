@@ -15,4 +15,8 @@ export class CourseComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showDetail() {
+    alert('button clicked')
+  }
+
 }

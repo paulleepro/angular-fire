@@ -19,7 +19,7 @@ export class CoursesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getCourses()
-      // .pipe(tap((info) => { console.log("info", info) }))
+      .pipe(tap((info) => { console.log("info", info) }))
       .subscribe({
           next: (courses: Course[]) => {
             this.courses = courses;

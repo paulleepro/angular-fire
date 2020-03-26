@@ -34,6 +34,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { FooterComponent } from './footer/footer.component';
     LoadingSpinnerComponent,
     CourseComponent,
     AddressFormComponent,
-    FooterComponent]
+    FooterComponent,
+    CourseDetailComponent]
    ,
   imports: [
     BrowserModule,

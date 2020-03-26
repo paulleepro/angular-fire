@@ -16,17 +16,17 @@ export class CourseService {
 
   constructor( private database: AngularFirestore, private http: HttpClient ) {}
 
-  // getCourses(): Observable<Course[]> {
-  //   return this.http.get<Course[]>(this.url);
-  // }
-
-
-  //TODO: coudl use snapshot changes - give smore info but not needed here?
   getCourses(): Observable<Course[]> {
-    return this.database.collection<Course>('courses').valueChanges();
+    return this.http.get<Course[]>(this.url);
   }
 
-  getCourse = (id: number): Observable<Course> =>{
+
+  //TODO: could use snapshot changes - give smore info but not needed here?
+  // getCourses(): Observable<Course[]> {
+  //   // return this.database.collection<Course>('courses').valueChanges();
+  // }
+
+  getCourse = (uid: number): Observable<Course> =>{
     return this.database.doc<Course>('courses/${uid}').valueChanges();
   }
 
