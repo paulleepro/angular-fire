@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -23,6 +22,8 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
+import { MatSliderModule } from '@angular/material/slider';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,8 @@ import { environment } from '../environments/environment';
   // AngularFireAnalyticsModule,
   AppRoutingModule,
   HttpClientModule,
-  BrowserAnimationsModule
+  BrowserAnimationsModule,
+  MatSliderModule
 
   ],
   providers: [],

@@ -15,21 +15,16 @@ export class CoursesListComponent implements OnInit {
 
   courses: Course[];
 
-  constructor(private service: CourseService) {
-    service.getCourses().pipe(tap((info) => { console.log("info", info) })).subscribe({
-      next: (courses: Course[]) => {
-        this.courses = courses;
-      }
-    });
-  }
+  constructor(private service: CourseService) {  }
 
   ngOnInit(): void {
-
-
-    // this.service.getCourses()
-    // .subscribe(courses => this.courses = courses);
-
-
+    this.service.getCourses()
+      // .pipe(tap((info) => { console.log("info", info) }))
+      .subscribe({
+          next: (courses: Course[]) => {
+            this.courses = courses;
+          }
+    });
   }
 
 
