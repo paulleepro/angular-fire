@@ -35,6 +35,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
+import { CourseAddFormComponent } from './course-add-form/course-add-form.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { CourseDetailComponent } from './course-detail/course-detail.component';
     CourseComponent,
     AddressFormComponent,
     FooterComponent,
-    CourseDetailComponent]
+    CourseDetailComponent,
+    CourseAddFormComponent]
    ,
   imports: [
     BrowserModule,
