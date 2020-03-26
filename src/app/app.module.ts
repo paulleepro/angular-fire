@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,25 +13,37 @@ import { CoursesListComponent } from './courses-list/courses-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
+import { CourseComponent } from './course/course.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // AboutComponent,
     NavbarComponent,
     NotfoundComponent,
     CoursesListComponent,
     WelcomeComponent,
     LoginComponent,
     AboutComponent,
-    // WelcomeComponent,
-    // LoginComponent
-  ],
+    CourseComponent]
+   ,
   imports: [
     BrowserModule,
-    AppRoutingModule
-    // ,HttpClientModule
+    AngularFireModule.initializeApp(environment.firebase),
+  AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+  AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+  // AngularFireAnalyticsModule,
+  AppRoutingModule,
+  HttpClientModule,
+  BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
