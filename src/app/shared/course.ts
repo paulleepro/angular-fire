@@ -4,5 +4,7 @@ export interface Course {
   "duration": number;
   "duration_unit": string;
   "description": string;
+  "image": string;
+  "authors": string[]
 
 }

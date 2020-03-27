@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-import { CourseComponent } from './course/course.component';
+import { CourseCardComponent } from './course-card/course-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from '@angular/fire';
@@ -34,6 +34,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
+import { CourseAddFormComponent } from './course-add-form/course-add-form.component';
 
 
 @NgModule({
@@ -46,9 +48,11 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     AboutComponent,
     LoadingSpinnerComponent,
-    CourseComponent,
+    CourseCardComponent,
     AddressFormComponent,
-    FooterComponent]
+    FooterComponent,
+    CourseDetailComponent,
+    CourseAddFormComponent]
    ,
   imports: [
     BrowserModule,

@@ -1,6 +1,4 @@
-<article class="<mat-card>
-
-</mat-card>">
+<article style="" class="">
   <section>
     <header>
       <h1>{{course.title}}</h1>
@@ -9,6 +7,7 @@
     <img src="" />
     <div> Course description: {{course.description}}
     </div>
-    <button>View Details</button>
+    <a class="btn btn-primary btn-lg" [routerLink]="['/courses', course.id]" role="button">View Course Details</a>
+
   </section>
 </article>
