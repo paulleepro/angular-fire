@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 import { AuthenticationService } from '../shared/authentication.service';
 
 @Component({
@@ -10,14 +12,19 @@ export class NavbarComponent implements OnInit {
   title = "Website Redesign";
   loggedIn = false;
 
-  constructor(private authService: AuthenticationService) {}
+  constructor(public auth: AngularFireAuth, private authservice: AuthenticationService) {
+  }
 
   ngOnInit() {
-    this.authService.getLoggedInStatus.subscribe(status => this.loggedIn=status);
+    // this.authService.getLoggedInStatus.subscribe(status => this.loggedIn=status);
+  }
+
+  login() {
+
   }
 
   logout() {
-    this.loggedIn = false;
-    this.authService.logout();
+    // this.loggedIn = false;
+    // this.authService.logout();
   }
 }

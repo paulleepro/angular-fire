@@ -1,9 +1,95 @@
-
-
 <!-- Here for testing purposes -->
-<h1>Course: {{ course.title}}</h1>
 
-<div>Course Duration: {{ course.duration}} {{ course.duration_unit}}</div>
+<h1>Course Outline for: <span>{{course.title}}</span>
+</h1>
+<p>{{ course.duration}} {{ course.duration_unit}}</p>
 
-<div>Course Description: {{ course.description}}</div>
 <div>Course Authors: {{ course.authors}}</div>
+
+<h2>
+  Course Overview for {{course.title}}
+</h2>
+
+
+<p>  {{ course.overview}}</p>
+
+<p><strong>HARD-CODED DESC</strong>
+  Whether new to version control or wanting to increase productivity with Git, this course helps students grasp the
+  concepts of distributed version control and effectively use Git tools. Explore both Git concepts and typical
+  distributed workflows through practical demonstrations. Building upon foundational knowledge of Git, we'll help you
+  leverage command line Git interaction skills as well as using Git UI Tools. This class will showcase traditional
+  collaboration workflows, branching and merging, undoing mistakes, and connecting with multiple remotes in a
+  distributed working environment.
+</p>
+
+<p>The training involves moving beyond the basics to delve into Git architecture, configuration and important team
+  functionality. In addition, discussions cover strategies for effectively using Git, including trade-offs between
+  strategies. It explores the internals of the Git file structure and how to track down changes and recover from
+  unwanted changes. It explains when and how to do a three-way merge, rebasing, and squashing commits.</p>
+
+<h2>Course Options for {{course.title}}</h2>
+<p>This class can be taught using GitHub, GitLab or Bitbucket for remote repositories
+</p>
+
+
+<h2>
+  Learning Objectives for {{course.title}}
+</h2>
+<ul>
+  After successfully completing this course, students will be able to:
+  <li>Understand important Git commands</li>
+  <li>Effectively use Git tools</li>
+  <li>Work in a distributed environment and remote repository concepts</li>
+  <li>Understand Git management concepts</li>
+  <li>Track and recover changes</li>
+  <li>Identify and apply correct merging strategies</li>
+</ul>
+
+<h2>Who should attend</h2>
+<p>This course is designed for developers who need to learn how to work with Git.</p>
+
+
+<h2>Course Outline for {{course.title}}</h2>
+
+<ul>
+  <ol>
+    <li>Overview of Course</li>
+    <ol>
+      <li>Course Objectives and Overview</li>
+      <li>Course Logistics and Introductions</li>
+      <li>The difference between Git and GitHub, GitLab, Bitbucket</li>
+    </ol>
+
+
+      <li>Overview and Setup for Git Version Control</li>
+      <ol>
+      <li>Key concepts of source / version control systems</li>
+      <li>Understand options for installing Git</li>
+      <li>Using Git Bash</li>
+      <li>Git Configurations</li>
+    </ol>
+
+
+        <li>Create and Work with a Local Git Repo</li>
+        <ol>
+        <li>Understanding how Git actually works</li>
+        <li>How to initialize a new local Git repository</li>
+        <li>Learn about the states files can be in</li>
+        <li>Staging and committing files</li>
+        <li>Deleting files from projects</li>
+        <li>See how to ignore certain files</li>
+        <li>Viewing history of Git commits</li>
+      </ol>
+
+
+        <li>Synching with a remote repository</li>
+        <ol>
+        <li>Creating a remote repository</li>
+        <li>Linking a local repository to a remote repository</li>
+        <li>Pushing / Pulling changes between local to remote</li>
+        <li>Using Git clone remote to create a new local repo</li>
+        <li>Git Credential Manager</li>
+     </ol>
+
+
+    </ol>

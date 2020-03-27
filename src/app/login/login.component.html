@@ -1,1 +1,70 @@
-<p>login works!</p>
+<div class="form-container">
+
+<!-- Default form login -->
+<form class="text-center border border-light p-5">
+
+  <p class="h4 mb-4">Sign in</p>
+
+  <!-- Email -->
+  <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+  <!-- Password -->
+  <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+
+  <div class="d-flex justify-content-around">
+    <div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+          Remember me
+        </label>
+      </div>
+    </div>
+    <div>
+      <!-- Forgot password -->
+      <a href="">Forgot password?</a>
+    </div>
+  </div>
+
+  <!-- Sign in button -->
+  <a name="" id="" class="btn btn-primary" href="#" role="button">Sign in</a>
+
+  <!-- Register -->
+  <p>Not a member?
+    <a href="">Register</a>
+  </p>
+
+  <!-- Social login -->
+  <p>or sign in with:</p>
+
+  <a type="button" class="light-blue-text mx-2">
+    <img class="s-logo" src="../../assets/images/facebook.svg" alt="" />
+  </a>
+
+</form>
+<!-- Default form login -->
+
+
+  <!-- <div *ngIf="!showSpinner; else elseBlock">
+    <span class="error" *ngIf="error">{{ error }}</span>
+
+    <button class="button" igxButton="raised" igxRipple (click)="loginFb()" id="fb">
+      <img class="s-logo" src="../../assets/images/facebook.svg" alt="">
+      <span>Login With Facebook</span>
+    </button>
+
+    <button class="button" igxButton="raised" igxRipple (click)="loginGoogle()" id="google">
+      <img class="s-logo" src="../../assets/images/google.svg" alt="">
+      <span>Login With Google</span>
+    </button>
+
+    <button class="button" igxButton="raised" igxRipple (click)="loginEmail()" id="email">
+      <span>Email</span>
+    </button>
+
+    <a routerLink="/signup" routerLinkActive="active" class="alc">Sign up for an <strong>Account</strong></a>
+  </div>
+  <ng-template #elseBlock>
+    <app-loading-spinner *ngIf="showSpinner"></app-loading-spinner>
+  </ng-template>
+</div> -->

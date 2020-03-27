@@ -1,11 +1,50 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from "@angular/fire/auth";
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
 
-  constructor(private router: Router){}
+  userData: Observable<firebase.User>;
+
+  constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
+    this.userData = angularFireAuth.authState;
+  }
+
+  signUp(email: string, password: string) {
+    this.angularFireAuth
+      .auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        console.log('Successfully signed up!', res);
+      })
+      .catch(error => {
+        console.log('Something is wrong:', error.message);
+      });
+  }
+
+  /* Sign in */
+  signIn(email: string, password: string) {
+    this.angularFireAuth
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then(res => {
+        console.log('Successfully signed in!');
+      })
+      .catch(err => {
+        console.log('Something is wrong:', err.message);
+      });
+  }
+
+  /* Sign out */
+  signOut() {
+    this.angularFireAuth
+      .auth
+      .signOut();
+  }
+
+  // constructor(private router: Router, private auth: AngularFireAuth){}
 
   public redirectUrl = '';
   isLoggedIn = false;
@@ -18,24 +57,24 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<boolean> {
-      if (username === 'user' && password === 'root') {
-          this.getLoggedInStatus.emit(true);
-          this.isLoggedIn = true;
-          localStorage.setItem('loggedin', 'true');
-          return of(true);
-      } else {
-          this.isLoggedIn = false;
-          this.getLoggedInStatus.emit(false);
-          return of(false);
-      }
+    if (username === 'user' && password === 'root') {
+      this.getLoggedInStatus.emit(true);
+      this.isLoggedIn = true;
+      localStorage.setItem('loggedin', 'true');
+      return of(true);
+    } else {
+      this.isLoggedIn = false;
+      this.getLoggedInStatus.emit(false);
+      return of(false);
+    }
   }
 
   logout(): void {
-      this.getLoggedInStatus.emit(false);
-      this.isLoggedIn = false;
-      console.log('logging out user');
-      localStorage.removeItem('loggedin');
-      this.router.navigate(['./login']);
+    this.getLoggedInStatus.emit(false);
+    this.isLoggedIn = false;
+    console.log('logging out user');
+    localStorage.removeItem('loggedin');
+    this.router.navigate(['./login']);
   }
 
   isUserLoggedIn() {
