@@ -1,4 +1,4 @@
-<article style="" class="">
+<!-- <article style="" class="">
   <section>
     <header>
       <h1>{{course.title}}</h1>
@@ -10,4 +10,15 @@
     <a class="btn btn-primary btn-lg" [routerLink]="['/courses', course.id]" role="button">View Course Details</a>
 
   </section>
-</article>
+</article> -->
+
+<div class="card m-5" style="width: 18rem;">
+  <img src="{{course.image_url}}" class="card-img-top" alt="{{course.title}}">
+  <div class="card-body">
+    <h2 class="card-title">{{course.title}}</h2>
+    <p class="card-text">This is a {{course.duration}} {{course.duration_unit}} course</p>
+    <p class="card-text">Course description: {{course.description}}</p>
+
+    <a [routerLink]="['/courses', course.id]" role="button" class="btn btn-primary">View Course Details</a>
+  </div>
+</div>
