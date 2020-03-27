@@ -6,7 +6,6 @@ export interface Course {
   "short_description": string;
   "description": string;
   "overview": string;
-  "image": string;
+  "image_url": string;
   "authors": string[];
-
 }

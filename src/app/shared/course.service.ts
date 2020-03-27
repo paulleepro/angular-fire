@@ -3,70 +3,76 @@ import { Course } from './course';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { AngularFirestore, DocumentChangeAction, Action, DocumentSnapshot, AngularFirestoreCollection } from '@angular/fire/firestore';
+import {
+	AngularFirestore,
+	DocumentChangeAction,
+	Action,
+	DocumentSnapshot,
+	AngularFirestoreCollection
+} from '@angular/fire/firestore';
 import { tap, map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class CourseService {
-  url = "http://localhost:4243/courses"
+	url = 'http://localhost:4243/courses';
 
-  private courseCollection: AngularFirestoreCollection<Course>;
-  courses: Observable<Course[]>;
+	private courseCollection: AngularFirestoreCollection<Course>;
+	courses: Observable<Course[]>;
 
-  constructor(private database: AngularFirestore, private http: HttpClient) {
-    this.courseCollection = database.collection<Course>('courses');
+	constructor(private database: AngularFirestore, private http: HttpClient) {
+		this.courseCollection = database.collection<Course>('courses');
 
-    this.courses = this.courseCollection
-      .snapshotChanges()
-      .pipe(
-        map(actions => actions.map(a => {
-          const data = a.payload.doc.data() as Course;
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        }))
-      );
-  }
+		this.courses = this.courseCollection.snapshotChanges().pipe(
+			map((actions) =>
+				actions.map((a) => {
+					const data = a.payload.doc.data() as Course;
+					const id = a.payload.doc.id;
+					console.log({ id, ...data });
+					return { id, ...data };
+				})
+			)
+		);
+	}
 
-  getCourses(): Observable<Course[]> {
-    return this.courses;
-  }
+	getCourses(): Observable<Course[]> {
+		return this.courses;
+	}
 
-  getCourse(userKey){
-    return this.courseCollection.doc(userKey).snapshotChanges()
-    .pipe(tap(stuff => console.log('stuff :', stuff)));
+	getCourse(userKey) {
+		return this.courseCollection
+			.doc(userKey)
+			.snapshotChanges()
+			.pipe(tap((stuff) => console.log('stuff :', stuff)));
+	}
 
-  }
+	// tslint:disable-next-line: align
+	// getCourse(uid: string): Observable<any> {
+	//   return this.database.doc<Course>(`courses/${uid}`)
+	//     .snapshotChanges()
+	//     .pipe(
+	//       map(actions => actions.map(a => {
+	//         const data = a.payload.doc.data() as Course;
+	//         const id = a.payload.doc.id;
+	//         return { id, ...data };
+	//       }))
+	//   );
+	// }
 
+	addCourse(course: Course) {
+		this.courseCollection.add(course);
+	}
 
-  // tslint:disable-next-line: align
-  // getCourse(uid: string): Observable<any> {
-  //   return this.database.doc<Course>(`courses/${uid}`)
-  //     .snapshotChanges()
-  //     .pipe(
-  //       map(actions => actions.map(a => {
-  //         const data = a.payload.doc.data() as Course;
-  //         const id = a.payload.doc.id;
-  //         return { id, ...data };
-  //       }))
-  //   );
-  // }
-
-  addCourse(course: Course) {
-    this.courseCollection.add(course);
-  }
-
-  // createUser(value, avatar){
-  //   return this.db.collection('users').add({
-  //     name: value.name,
-  //     nameToSearch: value.name.toLowerCase(),
-  //     surname: value.surname,
-  //     age: parseInt(value.age),
-  //     avatar: avatar
-  //   });
-  // }
-
+	// createUser(value, avatar){
+	//   return this.db.collection('users').add({
+	//     name: value.name,
+	//     nameToSearch: value.name.toLowerCase(),
+	//     surname: value.surname,
+	//     age: parseInt(value.age),
+	//     avatar: avatar
+	//   });
+	// }
 }
 
 //TODO: check other options
@@ -85,7 +91,6 @@ export class CourseService {
 // getNewUid(): string {
 //   return this.database.createId();
 // }
-
 
 //   exampleCreateCourse(data){
 //     return new Promise<any>((resolve, reject) => {
@@ -109,7 +114,3 @@ export class CourseService {
 //         // .stateChanges()
 //         // or .auditTrail()
 // }
-
-
-
-
