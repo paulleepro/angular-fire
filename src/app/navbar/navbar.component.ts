@@ -14,27 +14,30 @@ export class NavbarComponent implements OnInit {
   loggedIn = false;
 
   constructor(private afAuth: AngularFireAuth,
-    private userService: UserService) {
+    public authService: AuthenticationService) {
   }
 
   ngOnInit() {
-    this.afAuth.user.subscribe(firebaseUser => {
-      this.userService.setFirebaseUser(firebaseUser);
-    });
+    // TODO: update
+    // this.afAuth.user.subscribe(firebaseUser => {
+    //   this.authService.setFirebaseUser(firebaseUser);
+    // });
   }
 
-  get userDisplayName(): string {
-    return this.userService.isLoggedIn() ? this.userService.getUserDisplayName() : '';
-  }
+  //TODO hook to new service
+  // get userDisplayName(): string {
+  //   return this.authService.isLoggedIn() ? this.userService.getUserDisplayName() : '';
+  // }
 
-  get isLoggedIn(): boolean {
-    return !!this.userService.isLoggedIn();
-  }
+  //TODO hook to new service
+  // get isLoggedIn(): boolean {
+  //   return !!this.authService.isLoggedIn();
+  // }
 
 
 
   login() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+
   }
 
   logout() {

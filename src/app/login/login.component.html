@@ -1,48 +1,68 @@
 <div class="form-container">
 
-<!-- Default form login -->
-<form class="text-center border border-light p-5">
+  <!-- Default form login -->
+  <form #form1="ngForm" class="text-center border border-light p-5">
 
-  <p class="h4 mb-4">Sign in</p>
+    <p class="h4 mb-4" *ngIf="isSignIn">Sign in</p>
 
-  <!-- Email -->
-  <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+    <p class="h4 mb-4" *ngIf="isRegister">Register</p>
 
-  <!-- Password -->
-  <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+    <!-- Email -->
+    <input type="email" required name="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail"
+      [(ngModel)]="userlogin.email">
 
-  <div class="d-flex justify-content-around">
-    <div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
-          Remember me
-        </label>
+
+    <!-- Password -->
+    <input type="password" #pw1 required name="password" id="defaultLoginFormPassword" class="form-control mb-4"
+      placeholder="Password" [(ngModel)]="userlogin.password">
+
+    <!-- Password -->
+    <input *ngIf="isRegister" #pw2 required type="password" id="confirmPassword" class="form-control mb-4"
+      placeholder="Password Confirmation">
+
+    <div *ngIf="isSignIn" class="d-flex justify-content-around">
+      <div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" name="" id="remember-check" value="checkedValue" checked>
+            Remember me
+          </label>
+        </div>
+      </div>
+      <div>
+        <!-- Forgot password -->
+        <a href="">Forgot password?</a>
+      </div>
+
+      <div *ngIf="isSignIn" class="d-flex justify-content-around">
+        <!-- Sign in button -->
+        <div>
+
+          <button (click)="login()" name="" id="signin-button" class="btn btn-primary" href="#"
+            [disabled]="!form1.valid" role="button">Sign in
+          </button>
+        </div>
       </div>
     </div>
-    <div>
-      <!-- Forgot password -->
-      <a href="">Forgot password?</a>
+    <!-- Register -->
+    <p *ngIf="isRegister">Not a member?
+      <a (click)="showRegister()" class="btn">Register</a>
+    </p>
+
+    <!-- Add logic to disable button if passwords do not match -->
+    <div *ngIf="isRegister" (click)="signup()">
+      <a name="" id="" class="btn btn-primary" href="#" role="button">Register</a>
     </div>
-  </div>
 
-  <!-- Sign in button -->
-  <a name="" id="" class="btn btn-primary" href="#" role="button">Sign in</a>
+    <!-- Social login -->
+    <p>or sign in with:</p>
 
-  <!-- Register -->
-  <p>Not a member?
-    <a href="">Register</a>
-  </p>
+    <a type="button" class="light-blue-text mx-2">
+      <img class="s-logo" src="../../assets/images/facebook.svg" alt="" />
+    </a>
 
-  <!-- Social login -->
-  <p>or sign in with:</p>
-
-  <a type="button" class="light-blue-text mx-2">
-    <img class="s-logo" src="../../assets/images/facebook.svg" alt="" />
-  </a>
-
-</form>
-<!-- Default form login -->
+  </form>
+  <!-- Default form login -->
 
 
   <!-- <div *ngIf="!showSpinner; else elseBlock">

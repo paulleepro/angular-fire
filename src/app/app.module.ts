@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { AlertModule } from './_alert';
+
 
 // tslint:disable-next-line: quotemark
 import { NavbarComponent } from "./navbar/navbar.component";
@@ -36,6 +40,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { CourseAddFormComponent } from './course-add-form/course-add-form.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -52,10 +57,13 @@ import { CourseAddFormComponent } from './course-add-form/course-add-form.compon
     AddressFormComponent,
     FooterComponent,
     CourseDetailComponent,
-    CourseAddFormComponent]
-   ,
+    CourseAddFormComponent,
+    RegisterComponent]
+  ,
   imports: [
     BrowserModule,
+    FormsModule,
+    AlertModule,
     AngularFireModule.initializeApp(environment.firebase),
 
     // FirestoreModule is needed for the database features like working with collections, queries, and services for data streaming and manipulation.
@@ -66,18 +74,18 @@ import { CourseAddFormComponent } from './course-add-form/course-add-form.compon
 
     // AngularFireStorageModule. You can use this module to quickly and easily store and serve user-generated content like photos and videos as well as monitor uploads and metadata associated with files.
 
-  AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-  AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-  // AngularFireAnalyticsModule,
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    // AngularFireAnalyticsModule,
 
-  ReactiveFormsModule,
-  AppRoutingModule,
-  HttpClientModule,
-  BrowserAnimationsModule,
-  MatInputModule,
-  MatSelectModule,
-  MatRadioModule,
-  MatCardModule
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule
 
   ],
   providers: [],
