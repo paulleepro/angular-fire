@@ -15,5 +15,12 @@
         "statusBarItem.hoverBackground": "#008bb3",
         "statusBar.foreground": "#15202b"
     },
-    "peacock.color": "#00b3e6"
+    "peacock.color": "#00b3e6",
+    "editor.formatOnSave": true,
+
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+
 }

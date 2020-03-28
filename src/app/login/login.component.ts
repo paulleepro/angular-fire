@@ -13,7 +13,10 @@ import { AuthenticationService } from '../shared/authentication.service';
    host: { '[@moveIn]': '' }
 })
 export class LoginComponent implements OnInit, AfterViewInit {
-   return = '';
+  email: string;
+  password: string;
+
+  return = '';
    error: any;
    googleAuthProvider = new firebase.auth.GoogleAuthProvider();
    facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
@@ -23,18 +26,18 @@ export class LoginComponent implements OnInit, AfterViewInit {
    constructor(public afAuth: AngularFireAuth,
                private router: Router,
                private route: ActivatedRoute,
-               private authservice: AuthenticationService) {
+               private authService: AuthenticationService) {
 
-    console.log("in constructor");
+    // console.log("in constructor");
 
-      this.afAuth.authState.subscribe(auth => {
-         localStorage.setItem('showSpinner', 'false');
-         if (auth) {
-            this.router.navigateByUrl(this.return);
-         }
-      });
+    //   this.afAuth.authState.subscribe(auth => {
+    //      localStorage.setItem('showSpinner', 'false');
+    //      if (auth) {
+    //         this.router.navigateByUrl(this.return);
+    //      }
+    //   });
 
-      console.log("end of constructor");
+    //   console.log("end of constructor");
 
 
    }
@@ -46,13 +49,18 @@ export class LoginComponent implements OnInit, AfterViewInit {
          .subscribe(params => this.return = params['return'] || '/home');
    }
 
-   login() {
-    // this.authservice.signIn(new auth.GoogleAuthProvider());
-   }
+  signup() {
+    this.authService.signUp(this.email, this.password);
+    this.email = this.password = '';
+  }
 
+  login() {
+    this.authService.login(this.email, this.password);
+    this.email = this.password = '';
+  }
 
   logout() {
-    this.authservice.signOut();
+    this.authService.logout();
   }
 
 

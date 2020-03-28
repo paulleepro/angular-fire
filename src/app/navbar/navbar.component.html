@@ -14,6 +14,12 @@
         <li class="nav-item"><a class="nav-link" [routerLink]="['/about']"
             routerLinkActive="router-link-active">About</a></li>
 
+            <li *ngIf="!loggedIn" class="nav-item">
+              <a class="nav-link" [routerLink]="['/login']"
+              routerLinkActive="router-link-active">Login</a>
+            </li>
+
+
             <!-- <li *ngIf="!loggedIn" class="nav-item">
                 <a class="nav-link" [routerLink]="['/login']"
                 routerLinkActive="router-link-active">Login</a>
@@ -24,20 +30,10 @@
                  routerLinkActive="router-link-active">Logout</a>
               </li> -->
 
-              <div *ngIf="auth.user | async as user; else showLogin">
+              <div *ngIf="authService.user | async as user">
                 <h1>Hello {{ user.displayName }}!</h1>
                 <button (click)="logout()">Logout</button>
               </div>
-              <ng-template #showLogin>
-                <p>Please login.</p>
-                <button (click)="login()">Login with Google</button>
-              </ng-template>
-
-
-
-
-
-
 
       </ul>
     </div>

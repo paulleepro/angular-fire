@@ -7,10 +7,23 @@ import { AngularFireAuth } from "@angular/fire/auth";
 export class AuthenticationService {
 
   userData: Observable<firebase.User>;
+  currentUser;
 
-  constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
+  constructor(private router: Router,
+              private angularFireAuth: AngularFireAuth) {
     this.userData = angularFireAuth.authState;
+    this.userData.subscribe(user => {
+      if (user) {
+        this.currentUser = user;
+      } else {
+        this.currentUser = null;
+      }
+    });
   }
+
+  // getAuthState() {
+  //   return this.authState;
+  // }
 
   signUp(email: string, password: string) {
     this.angularFireAuth
