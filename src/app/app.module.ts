@@ -1,12 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+import { MatListModule } from '@angular/material/list';
+
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // tslint:disable-next-line: quotemark
-import { NavbarComponent } from "./navbar/navbar.component";
+import { NavbarComponent } from './navbar/navbar.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -32,55 +35,57 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { CourseAddFormComponent } from './course-add-form/course-add-form.component';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    NotfoundComponent,
-    CoursesListComponent,
-    WelcomeComponent,
-    LoginComponent,
-    AboutComponent,
-    LoadingSpinnerComponent,
-    CourseCardComponent,
-    AddressFormComponent,
-    FooterComponent,
-    CourseDetailComponent,
-    CourseAddFormComponent]
-   ,
-  imports: [
-    BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
+	declarations: [
+		AppComponent,
+		NavbarComponent,
+		NotfoundComponent,
+		CoursesListComponent,
+		WelcomeComponent,
+		LoginComponent,
+		AboutComponent,
+		LoadingSpinnerComponent,
+		CourseCardComponent,
+		AddressFormComponent,
+		FooterComponent,
+		CourseDetailComponent,
+		CourseAddFormComponent
+	],
+	imports: [
+		BrowserModule,
+		AngularFireModule.initializeApp(environment.firebase),
+		FormsModule,
 
-    // FirestoreModule is needed for the database features like working with collections, queries, and services for data streaming and manipulation.
+		// FirestoreModule is needed for the database features like working with collections, queries, and services for data streaming and manipulation.
 
-    // FireAuthModule is needed for authentication features like monitoring authentication state, Log-in providers and security.
+		// FireAuthModule is needed for authentication features like monitoring authentication state, Log-in providers and security.
 
-    // FireDatabaseModule allows us to work with Realtime databases. It’s very efficient for mobile and web apps that require synced states across clients in Realtime.
+		// FireDatabaseModule allows us to work with Realtime databases. It’s very efficient for mobile and web apps that require synced states across clients in Realtime.
 
-    // AngularFireStorageModule. You can use this module to quickly and easily store and serve user-generated content like photos and videos as well as monitor uploads and metadata associated with files.
+		// AngularFireStorageModule. You can use this module to quickly and easily store and serve user-generated content like photos and videos as well as monitor uploads and metadata associated with files.
 
-  AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-  AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-  // AngularFireAnalyticsModule,
+		AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+		AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+		// AngularFireAnalyticsModule,
 
-  ReactiveFormsModule,
-  AppRoutingModule,
-  HttpClientModule,
-  BrowserAnimationsModule,
-  MatInputModule,
-  MatSelectModule,
-  MatRadioModule,
-  MatCardModule
-
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+		ReactiveFormsModule,
+		AppRoutingModule,
+		HttpClientModule,
+		BrowserAnimationsModule,
+		MatInputModule,
+		MatSelectModule,
+		MatRadioModule,
+		MatCardModule,
+		MatButtonModule,
+		MatListModule
+	],
+	providers: [],
+	bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}
