@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
       if (result.user) {
         this.showSpinner = true;
         localStorage.setItem('showSpinner', 'true');
-        this.router.navigate([this.return]);
+        this.router.navigate(['/account']);
       }
     }).catch(function (error) {
       // Handle Errors here.
@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   loginGoogle() {
     this.afAuth.auth.signInWithRedirect(this.googleAuthProvider).then(
       (success) => {
-        this.router.navigate([this.return]);
+        this.router.navigate(['/account']);
       }).catch(
         (err) => {
           this.error = err;

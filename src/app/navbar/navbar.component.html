@@ -15,16 +15,14 @@
     </ul>
 
 
-    <div *ngIf="authService.user$ | async as user else login" class="navbar-text">
-      <p>Hello {{ user.displayName }}!</p>
-      <p class="nav-item">
-        <a class="nav-link" (click)="authService.signOut()">Logout</a>
-      </p>
+    <div *ngIf="isLoggedIn" class="nav-item">
+      <span class="mr-4">Hello {{ userDisplayName }}!</span>
+
+      <a (click)="authService.signOut()">Logout</a>
     </div>
 
-    <ng-template #login class="nav-item">
+    <div *ngIf="!isLoggedIn" class="nav-item">
       <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active">Login/Register</a>
-    </ng-template>
+    </div>
   </div>
-
 </nav>

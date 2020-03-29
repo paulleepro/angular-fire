@@ -44,8 +44,9 @@
         </div>
       </div>
     </div>
+
     <!-- Register -->
-    <p *ngIf="isRegister">Not a member?
+    <p *ngIf="isSignIn">Not signed up?
       <a (click)="showRegister()" class="btn">Register</a>
     </p>
 
@@ -53,15 +54,20 @@
     <div *ngIf="isRegister" (click)="signup()">
       <a name="" id="" class="btn btn-primary" href="#" role="button">Register</a>
     </div>
-
-    <!-- Social login -->
-    <p>or sign in with:</p>
-
-    <a type="button" class="light-blue-text mx-2">
+  </form>
+  <!-- Social login -->
+  <p>or sign in with:</p>
+  <div style="background-color:blueviolet">
+    <a (click)="loginFb()" type="button" class="light-blue-text mx-2">
       <img class="s-logo" src="../../assets/images/facebook.svg" alt="" />
     </a>
 
-  </form>
+    <a id="google" (click)="loginGoogle()" type="button" class="light-blue-text mx-2">
+      <img class="s-logo" src="../../assets/images/google.svg" alt="google-logo">
+      <span>Login With Google</span>
+    </a>
+  </div>
+
   <!-- Default form login -->
 
 
