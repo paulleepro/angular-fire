@@ -27,7 +27,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
   ],
-  exports: [
+  exports: [AngularFireModule, AngularFirestoreModule,
+    AngularFireAuthModule
 
   ]
 })

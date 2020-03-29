@@ -5,6 +5,7 @@ import { AccountMenuComponent } from './account-menu/account-menu.component';
 import { AddressFormComponent } from '../address-form/address-form.component';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -14,8 +15,9 @@ import { RegisterComponent } from '../register/register.component';
     RegisterComponent
 
   ],
+  exports: [],
   imports: [
-    CommonModule
+    CommonModule, SharedModule
   ]
 })
 export class AccountsModule { }

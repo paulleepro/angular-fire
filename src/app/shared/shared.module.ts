@@ -6,14 +6,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
-
-
+import { FirebaseModule } from '../firebase/firebase.module';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     FormsModule,
+    FirebaseModule,
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
@@ -28,7 +28,8 @@ import { MatListModule } from '@angular/material/list';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    FirebaseModule
   ]
 })
 export class SharedModule { }

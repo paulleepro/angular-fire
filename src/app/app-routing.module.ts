@@ -34,24 +34,15 @@ const routes: Routes = [
 
   {
     path: "courses", //Angular 8 Notation with Promise
-    component: CoursesListComponent
+    loadChildren: () => import('./courses/courses.module')
+      .then(mod => {
+        console.log('in promise loadChildren');
+        return mod.CoursesModule;
+      })
   },
-
-  {
-    path: "course-add", //Angular 8 Notation with Promise
-    component: CourseAddFormComponent
-  },
-
-  {
-    path: "courses/:id", component: CourseDetailComponent,
-    resolve: { data: EditCourseResolver }
-  },
-
 
 
   { path: "**", component: NotfoundComponent, pathMatch: "full" }
-
-
 
 ];
 

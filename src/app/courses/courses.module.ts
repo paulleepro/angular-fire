@@ -5,6 +5,8 @@ import { CourseAddFormComponent } from './course-add-form/course-add-form.compon
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { CourseCardComponent } from './course-card/course-card.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { CoursesRoutingModule } from './courses-routing.module';
 
 
 
@@ -15,7 +17,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
   ],
   imports: [
-    CommonModule, FormsModule, ReactiveFormsModule
+    CommonModule, SharedModule, CoursesRoutingModule
   ]
 })
 export class CoursesModule { }
