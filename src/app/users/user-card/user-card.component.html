@@ -1,0 +1,28 @@
+
+<div class="card mx-3 my-3">
+  <div class="card-body p-0 text-center">
+    <img class="card-img-top" style="width:200px" src="assets/images/{{ user.img }}" alt="" />
+    <h5 class="card-title d5">{{ user.first_name }} {{ user.last_name }}</h5>
+    <h6 class="card-text text-muted">Birthday:{{user.dob}}</h6>
+    <h6 [class.is-inactive]="!user.isActive">Active: {{user.isActive}}</h6>
+    <div class="card-footer">
+      <button [routerLink]="['/users', user.id]" class="btn btn-primary">
+        See Profile</button>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="card mx-3 my-3">
+  <div class="card-body p-0 text-center">
+    <img class="card-img-top" style="width:200px" src="assets/images/{{ user.img }}" alt="" />
+    <h5 class="card-title d5">{{ user.first_name }} {{ user.last_name }}</h5>
+    <h6 class="card-text text-muted">Birthday:{{user.dob}}</h6>
+    <h6 [class.is-inactive]="!user.isActive">Active: {{user.isActive}}</h6>
+    <div class="card-footer">
+      <button (click)="clickPerson()" class="btn btn-primary">
+        See Profile</button>
+    </div>
+  </div>
+</div> -->
+
+

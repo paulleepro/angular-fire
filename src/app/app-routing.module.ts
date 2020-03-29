@@ -8,6 +8,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { CourseAddFormComponent } from './course-add-form/course-add-form.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { EditCourseResolver } from './course-detail/edit-course.resolver';
+import { UserLandingComponent } from './users/user-landing/user-landing.component';
+import { AuthGuard } from './services/auth.guard';
+import { AccountInfoComponent } from './account-info/account-info.component';
 
 
 const routes: Routes = [
@@ -21,25 +24,32 @@ const routes: Routes = [
     path: "about", component: AboutComponent
   },
 
+  {
+    path: "account",
+    component: AccountInfoComponent,
+    canActivate: [AuthGuard]
 
-{
+  },
+
+
+  {
     path: "courses", //Angular 8 Notation with Promise
     component: CoursesListComponent
-    },
+  },
 
-    {
-      path: "course-add", //Angular 8 Notation with Promise
-      component: CourseAddFormComponent
-      },
+  {
+    path: "course-add", //Angular 8 Notation with Promise
+    component: CourseAddFormComponent
+  },
 
-    {
-      path: "courses/:id", component: CourseDetailComponent,
-      resolve:{data : EditCourseResolver}
-    },
+  {
+    path: "courses/:id", component: CourseDetailComponent,
+    resolve: { data: EditCourseResolver }
+  },
 
 
 
-    { path: "**", component: NotfoundComponent, pathMatch: "full" }
+  { path: "**", component: NotfoundComponent, pathMatch: "full" }
 
 
 

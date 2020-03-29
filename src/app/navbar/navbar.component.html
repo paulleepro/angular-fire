@@ -12,12 +12,11 @@
         <a class="nav-link" [routerLink]="['/courses']" routerLinkActive="router-link-active">View Courses</a></li>
       <li class="nav-item"><a class="nav-link" [routerLink]="['/about']" routerLinkActive="router-link-active">About</a>
       </li>
-
     </ul>
 
 
     <div *ngIf="authService.user$ | async as user else login" class="navbar-text">
-      <p>Hello {{ user | json }}!</p>
+      <p>Hello {{ user.displayName }}!</p>
       <p class="nav-item">
         <a class="nav-link" (click)="authService.signOut()">Logout</a>
       </p>

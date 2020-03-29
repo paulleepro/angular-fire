@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router, ActivatedRoute } from '@angular/router';
 import { moveIn } from '../router.animations';
 import * as firebase from 'firebase/app';
-import { AuthenticationService } from '../shared/authentication.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { AlertService } from '../_alert';
 
 
@@ -36,19 +36,18 @@ export class LoginComponent implements OnInit, AfterViewInit {
     protected alert: AlertService
   ) {
 
-    this.afAuth.authState.subscribe(auth => {
-      if (auth) {
-        this.router.navigateByUrl(this.return);
-      }
-    });
-
+    // this.afAuth.authState.subscribe(auth => {
+    //   if (auth) {
+    //     // this.router.navigateByUrl(this.return);
+    //   }
+    // });
   }
 
   ngOnInit() {
     // Get the query params
     console.log("in ngOnOnit login");
-    this.route.queryParams
-      .subscribe(params => this.return = params['return'] || '/welcome');
+    // this.route.queryParams
+    //   .subscribe(params => this.return = params['return'] || '/welcome');
   }
 
   showRegister() {

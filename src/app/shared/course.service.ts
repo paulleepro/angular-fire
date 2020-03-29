@@ -44,7 +44,9 @@ export class CourseService {
     return this.courseCollection
       .doc(userKey)
       .snapshotChanges()
-      .pipe(tap((stuff) => console.log('stuff :', stuff)));
+      // .pipe(tap((stuff) => console.log('stuff :', stuff)))
+
+      ;
   }
 
   // tslint:disable-next-line: align

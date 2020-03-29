@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
-import { AuthenticationService } from '../shared/authentication.service';
+// import { auth } from 'firebase/app';
+import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../shared/user.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { UserService } from '../shared/user.service';
 })
 export class NavbarComponent implements OnInit {
   title = "Website Redesign";
-  loggedIn = false;
+  isLoggedIn = false;
 
   constructor(private afAuth: AngularFireAuth,
     public authService: AuthenticationService) {
@@ -22,25 +22,28 @@ export class NavbarComponent implements OnInit {
     // this.afAuth.user.subscribe(firebaseUser => {
     //   this.authService.setFirebaseUser(firebaseUser);
     // });
+
+    this.afAuth.authState.subscribe(auth => {
+      if (auth) {
+        this.isLoggedIn = true;
+      }
+      else {
+        this.isLoggedIn = false;
+      }
+    });
   }
 
-  //TODO hook to new service
-  // get userDisplayName(): string {
-  //   return this.authService.isLoggedIn() ? this.userService.getUserDisplayName() : '';
-  // }
-
-  //TODO hook to new service
-  // get isLoggedIn(): boolean {
-  //   return !!this.authService.isLoggedIn();
-  // }
-
-
-
-  login() {
-
-  }
 
   logout() {
+    this.isLoggedIn = false;
     this.afAuth.auth.signOut();
   }
 }
+
+
+
+// TODO hook to new service
+// get userDisplayName(): string {
+//   return this.authService.isisLoggedIn() ? this.userService.getUserDisplayName() : '';
+// }
+

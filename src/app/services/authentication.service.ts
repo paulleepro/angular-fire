@@ -17,7 +17,7 @@ export class AuthenticationService {
 
   public user$: Observable<User>;
 
-  userData: Observable<firebase.User>;
+  // userData: Observable<firebase.User>;
   currentUser;
 
   constructor(private router: Router,
@@ -26,11 +26,13 @@ export class AuthenticationService {
     private alertService: AlertService) {
     this.user$ = afAuth.authState.pipe(
       switchMap(user => {
-        if (user) { //get info if it exists for a user
+        if (user) { // get info if it exists for a user
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         }
-        else //or simply return O of null
+        // tslint:disable-next-line: one-line
+        else { // or simply return Obs of null
           return of(null);
+        }
       })
     );
   }
@@ -39,9 +41,9 @@ export class AuthenticationService {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
     return this.updateUserData(credential.user);
-
   }
 
+  //updates the users doc with info - WHY?  understand first time maybe....
   private updateUserData(user: User) {
     const userRef: AngularFirestoreDocument<User> = this.afs.doc(`users/${user.uid}`);
 
@@ -49,10 +51,11 @@ export class AuthenticationService {
     const data = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName
-    }
+      displayName: user.displayName || user.email,
+      photoURL: user.photoURL || ''
+    };
 
-    //set is destructive - merge makes it only change what is needed
+    // set is destructive - merge makes it only change what is needed
     return userRef.set(data, { merge: true })
   }
 
@@ -63,9 +66,7 @@ export class AuthenticationService {
       .signOut();
     return this.router.navigate(['/']);
   }
-  // getAuthState() {
-  //   return this.authState;
-  // }
+
 
   signUp(email: string, password: string) {
     this.afAuth
@@ -85,15 +86,42 @@ export class AuthenticationService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(res => {
+        // TODO: store off ths res info
         console.log('Successfully signed in!');
+        this.updateUserData(res.user);
+
+        // TODO put in logic to verify email address
+        if (res.user.emailVerified) {
+          window.alert('res.user.emailVerified');
+          // this.SetUserData(result.user);
+          // this.router.navigateByUrl(url);
+        } else {
+          window.alert('Email is not verified');
+          return false;
+        }
+
+        this.alertService.success("Successful login");
+        this.router.navigate(['./account']);
       })
       .catch(err => {
-        console.log('Something is wrong:', err.message);
         this.alertService.error("Invalid credentials. Please recheck and try again.");
       });
   }
 
 
-
+  // Store user is store and firebase
+  // setUserData(user: User) {
+  //   const userRef: AngularFirestoreDocument<any> = this.firebaseStorage.doc(`users/${user.uid}`);
+  //   const userData: User = {
+  //     uid: user.uid,
+  //     email: user.email,
+  //     displayName: user.displayName || user.email,
+  //     photoURL: user.photoURL || '',
+  //     emailVerified: user.emailVerified
+  //   };
+  //   return userRef.set(userData, {
+  //     merge: true
+  //   });
+  // }
 
 }

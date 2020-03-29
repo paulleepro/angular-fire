@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
@@ -41,6 +41,10 @@ import { FooterComponent } from './footer/footer.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { CourseAddFormComponent } from './course-add-form/course-add-form.component';
 import { RegisterComponent } from './register/register.component';
+// import { UserLandingComponent } from './users/user-landing/user-landing.component';
+import { JwtInterceptor } from './services/jwt.interceptor';
+import { AccountInfoComponent } from './account-info/account-info.component';
+import { UsersModule } from './users/users.module';
 
 
 @NgModule({
@@ -58,12 +62,15 @@ import { RegisterComponent } from './register/register.component';
     FooterComponent,
     CourseDetailComponent,
     CourseAddFormComponent,
-    RegisterComponent]
+    RegisterComponent,
+    // UserLandingComponent,
+    AccountInfoComponent]
   ,
   imports: [
     BrowserModule,
     FormsModule,
     AlertModule,
+    UsersModule,
     AngularFireModule.initializeApp(environment.firebase),
 
     // FirestoreModule is needed for the database features like working with collections, queries, and services for data streaming and manipulation.
@@ -88,7 +95,10 @@ import { RegisterComponent } from './register/register.component';
     MatCardModule
 
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
