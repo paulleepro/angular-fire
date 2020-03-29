@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { AngularFireAuth } from '@angular/fire/auth';
 // import { auth } from 'firebase/app';
 import { AuthenticationService } from '../services/authentication.service';
-import { UserService } from '../shared/user.service';
 import { User } from '../interfaces/user';
 import { tap } from 'rxjs/internal/operators/tap';
 

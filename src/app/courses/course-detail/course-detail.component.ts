@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CourseService } from '../../shared/course.service';
-import { Course } from '../../shared/course';
+import { CourseService } from '../services/course.service';
+import { Course } from '../model/course';
 import { tap } from 'rxjs/operators';
 
 @Component({

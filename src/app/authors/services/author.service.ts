@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Author } from './author';
+// import { Author } from './author';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { tap, map } from 'rxjs/operators';
+import { Author } from '../model/author';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorService {
-  url = 'http://localhost:4243/authors';
+  // url = 'http://localhost:4243/authors';
 
   private authorCollection: AngularFirestoreCollection<Author>;
   authors: Observable<Author[]>;

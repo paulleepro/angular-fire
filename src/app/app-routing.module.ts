@@ -9,8 +9,8 @@ import { CourseAddFormComponent } from './courses/course-add-form/course-add-for
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { EditCourseResolver } from './courses/course-detail/edit-course.resolver';
 import { UserLandingComponent } from './users/user-landing/user-landing.component';
-import { AuthGuard } from './services/auth.guard';
-import { AccountInfoComponent } from './account-info/account-info.component';
+import { AuthGuard } from './services/guards/auth.guard';
+import { AccountInfoComponent } from './accounts/account-info/account-info.component';
 
 
 const routes: Routes = [

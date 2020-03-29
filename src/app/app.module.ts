@@ -29,74 +29,40 @@ import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 
-import { MatSliderModule } from '@angular/material/slider';
-
-// import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule } from  '@angular/material';
-import { AddressFormComponent } from './address-form/address-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-
-import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
-import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
-import { CourseAddFormComponent } from './courses/course-add-form/course-add-form.component';
-import { RegisterComponent } from './register/register.component';
-// import { UserLandingComponent } from './users/user-landing/user-landing.component';
 import { JwtInterceptor } from './services/jwt.interceptor';
-import { AccountInfoComponent } from './account-info/account-info.component';
 import { UsersModule } from './users/users.module';
+import { AuthorComponent } from './authors/author/author.component';
+import { AccountsModule } from './accounts/accounts.module';
+import { CoursesModule } from './courses/courses.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     NotfoundComponent,
-    CoursesListComponent,
     WelcomeComponent,
-    LoginComponent,
     AboutComponent,
     LoadingSpinnerComponent,
-    CourseCardComponent,
-    AddressFormComponent,
     FooterComponent,
-    CourseDetailComponent,
-    CourseAddFormComponent,
-    RegisterComponent,
-    // UserLandingComponent,
-    AccountInfoComponent]
+    AuthorComponent]
   ,
   imports: [
     BrowserModule,
-    FormsModule,
-    AlertModule,
-    UsersModule,
-    AngularFireModule.initializeApp(environment.firebase),
-
-    // FirestoreModule is needed for the database features like working with collections, queries, and services for data streaming and manipulation.
-
-    // FireAuthModule is needed for authentication features like monitoring authentication state, Log-in providers and security.
-
-    // FireDatabaseModule allows us to work with Realtime databases. It’s very efficient for mobile and web apps that require synced states across clients in Realtime.
-
-    // AngularFireStorageModule. You can use this module to quickly and easily store and serve user-generated content like photos and videos as well as monitor uploads and metadata associated with files.
-
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
-    // AngularFireAnalyticsModule,
-
-    ReactiveFormsModule,
+    SharedModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCardModule,
-    MatListModule
-
+    AlertModule,
+    AccountsModule,
+    CoursesModule,
+    UsersModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

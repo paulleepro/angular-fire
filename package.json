@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "run-p start-db start-app",
+    "start": "ng serve --port 4242 -o",
+    "start-local-server": "run-p start-db start-app",
     "start-app": "ng serve --port 4242 -o",
     "start-db": "json-server --watch data/courses-info.json --port 4243",
     "build": "ng build",

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Course } from '../../shared/course';
-import { CourseService } from '../../shared/course.service';
+import { Course } from '../model/course';
+import { CourseService } from '../services/course.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
 import { Observable } from 'rxjs';

@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {AngularFirestore, AngularFirestoreDocument, DocumentChangeAction} from '@angular/fire/firestore';
-import {User as FirebaseUser} from 'firebase';
-import {User} from '../interfaces/user';
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument, DocumentChangeAction } from '@angular/fire/firestore';
+import { User as FirebaseUser } from 'firebase';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AuthenticatedUserService {
 
   private user: User;
   private firebaseUser: FirebaseUser;
@@ -22,7 +22,7 @@ export class UserService {
       });
 
       this.afStore.collection<any>('users').doc(firebaseUser.email)
-        .set({name: firebaseUser.displayName}, {merge: true});
+        .set({ name: firebaseUser.displayName }, { merge: true });
     }
   }
 

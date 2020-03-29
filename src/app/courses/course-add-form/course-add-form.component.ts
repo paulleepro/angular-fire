@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Author } from '../../shared/author';
-import { AuthorService } from '../../shared/author.service';
-import { Course } from '../../shared/course';
-import { CourseService } from '../../shared/course.service';
+import { Author } from '../../authors/model/author';
+import { AuthorService } from '../../authors/services/author.service';
+import { Course } from '../model/course';
+import { CourseService } from '../services/course.service';
 import 'firebase/firestore';
 
 @Component({

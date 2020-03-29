@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { UserService } from '../shared/user.service';
+import { UserService } from '../services/user.service';
 import { User } from '../model/user';
 
 @Component({
@@ -13,7 +13,7 @@ export class UserDetailComponent implements OnInit {
   user: User;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private service: UserService) { }
+    private service: UserService) { }
 
   ngOnInit() {
     const id = +this.activatedRoute.snapshot.paramMap.get('id');

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, ActivatedRoute } from "@angular/router";
-import { CourseService } from '../../shared/course.service';
+import { CourseService } from '../services/course.service';
 
 @Injectable({ providedIn: "root" })
 export class EditCourseResolver implements Resolve<any> {
