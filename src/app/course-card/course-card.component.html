@@ -1,4 +1,15 @@
-<div class="card m-5" style="width: 18rem;">
+<div class="col col-lg-4 mx-auto mb-3">
+<mat-card style="width: 15rem; height: 18rem">
+  <img src="{{course.image_url}}" alt="{{course.title}}" class="mb-3 ml-auto" mat-card-avatar mat-card-md-image>
+  <mat-card-title style="font-size: 0.9rem">{{course.title}}</mat-card-title>
+  <mat-card-content>This is a {{course.duration}} {{course.duration_unit}} course</mat-card-content>
+  <mat-card-actions>
+    <a [routerLink]="['/courses', course.id]" role="button" mat-stroked-button >View Course Details</a>
+  </mat-card-actions>
+</mat-card>
+</div>
+
+<!-- <div class="card m-5" style="width: 18rem;">
   <img src="{{course.image_url}}" class="card-img-top" alt="{{course.title}}">
   <div class="card-body">
     <h2 class="card-title">{{course.title}}</h2>
@@ -7,4 +18,4 @@
 
     <a [routerLink]="['/courses', course.id]" role="button" class="btn btn-primary">View Course Details</a>
   </div>
-</div>
+</div> -->
