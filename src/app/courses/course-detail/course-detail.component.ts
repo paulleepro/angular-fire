@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CourseService } from '../shared/course.service';
-import { Course } from '../shared/course';
+import { CourseService } from '../../shared/course.service';
+import { Course } from '../../shared/course';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -13,17 +13,17 @@ export class CourseDetailComponent implements OnInit {
   course: Course;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private service: CourseService) { }
+    private service: CourseService) { }
 
   ngOnInit() {
 
-      this.activatedRoute.data.subscribe(routeData => {
-        let data = routeData['data'];
-        if (data) {
-          this.course = data.payload.data();
-          this.course.id = data.payload.id;
-        }
-      })
+    this.activatedRoute.data.subscribe(routeData => {
+      let data = routeData['data'];
+      if (data) {
+        this.course = data.payload.data();
+        this.course.id = data.payload.id;
+      }
+    })
 
 
   }

@@ -27,8 +27,8 @@ export class NavbarComponent implements OnInit {
     // });
 
     //firebase user had mroe details
-    this.afAuth.authState.
-      pipe(tap((data) => console.log(data)))
+    this.afAuth.authState
+      // .pipe(tap((data) => console.log(data)))
       .subscribe(auth => {
         if (auth) {
           this.isLoggedIn = true;

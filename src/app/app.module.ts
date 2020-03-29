@@ -13,13 +13,13 @@ import { AlertModule } from './_alert';
 // tslint:disable-next-line: quotemark
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { CoursesListComponent } from './courses-list/courses-list.component';
+import { CoursesListComponent } from './courses/courses-list/courses-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
 
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-import { CourseCardComponent } from './course-card/course-card.component';
+import { CourseCardComponent } from './courses/course-card/course-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from '@angular/fire';
@@ -37,11 +37,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
-import { CourseDetailComponent } from './course-detail/course-detail.component';
-import { CourseAddFormComponent } from './course-add-form/course-add-form.component';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { CourseAddFormComponent } from './courses/course-add-form/course-add-form.component';
 import { RegisterComponent } from './register/register.component';
 // import { UserLandingComponent } from './users/user-landing/user-landing.component';
 import { JwtInterceptor } from './services/jwt.interceptor';
@@ -93,7 +94,8 @@ import { UsersModule } from './users/users.module';
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule
 
   ],
   providers: [

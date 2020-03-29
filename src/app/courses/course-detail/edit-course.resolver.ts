@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, ActivatedRoute } from "@angular/router";
-import { CourseService } from '../shared/course.service';
+import { CourseService } from '../../shared/course.service';
 
-@Injectable({providedIn:"root"})
+@Injectable({ providedIn: "root" })
 export class EditCourseResolver implements Resolve<any> {
 
   constructor(public service: CourseService) { }
@@ -12,11 +12,11 @@ export class EditCourseResolver implements Resolve<any> {
     return new Promise((resolve, reject) => {
       let courseKey = route.paramMap.get('id');
       this.service.getCourse(courseKey)
-      .subscribe(
-        data => {
-          resolve(data);
-        }
-      );
+        .subscribe(
+          data => {
+            resolve(data);
+          }
+        );
     })
   }
 }

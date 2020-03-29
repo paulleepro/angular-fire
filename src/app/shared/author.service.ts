@@ -7,41 +7,41 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { tap, map } from 'rxjs/operators';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthorService {
-	url = 'http://localhost:4243/authors';
+  url = 'http://localhost:4243/authors';
 
-	private authorCollection: AngularFirestoreCollection<Author>;
-	authors: Observable<Author[]>;
+  private authorCollection: AngularFirestoreCollection<Author>;
+  authors: Observable<Author[]>;
 
-	constructor(private database: AngularFirestore, private http: HttpClient) {
-		this.authorCollection = database.collection<Author>('authors');
+  constructor(private database: AngularFirestore, private http: HttpClient) {
+    this.authorCollection = database.collection<Author>('authors');
 
-		this.authors = this.authorCollection.snapshotChanges().pipe(
-			map((actions) =>
-				actions.map((a) => {
-					const data = a.payload.doc.data() as Author;
-					const id = a.payload.doc.id;
-					console.log({ id, ...data });
-					return { id, ...data };
-				})
-			)
-		);
-	}
+    this.authors = this.authorCollection.snapshotChanges().pipe(
+      map((actions) =>
+        actions.map((a) => {
+          const data = a.payload.doc.data() as Author;
+          const id = a.payload.doc.id;
+          // console.log({ id, ...data });
+          return { id, ...data };
+        })
+      )
+    );
+  }
 
-	getAuthors(): Observable<Author[]> {
-		return this.authors;
-	}
+  getAuthors(): Observable<Author[]> {
+    return this.authors;
+  }
 
-	getAuthor(userKey) {
-		return this.authorCollection
-			.doc(userKey)
-			.snapshotChanges()
-			.pipe(tap((stuff) => console.log('stuff :', stuff)));
-	}
+  getAuthor(userKey) {
+    return this.authorCollection
+      .doc(userKey)
+      .snapshotChanges()
+      .pipe(tap((stuff) => console.log('stuff :', stuff)));
+  }
 
-	addAuthor(author: Author) {
-		this.authorCollection.add(author);
-	}
+  addAuthor(author: Author) {
+    this.authorCollection.add(author);
+  }
 }
