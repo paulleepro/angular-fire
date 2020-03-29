@@ -1,5 +1,7 @@
 <!-- Here for testing purposes -->
 
+<a class routerLink="/courses"> Back to Courses List</a>
+
 <h1>Course Outline for: <span>{{course.title}}</span>
 </h1>
 <p>{{ course.duration}} {{ course.duration_unit}}</p>
@@ -11,16 +13,16 @@
 </h2>
 
 
-<p>  {{ course.overview}}</p>
+<p> {{ course.overview}}</p>
 
 <p>
   {{course.description}}
 </p>
 
 <div *ngIf="course.options">
-<h2>Course Options for {{course.title}}</h2>
-<p>{{course.options}}
-</p>
+  <h2>Course Options for {{course.title}}</h2>
+  <p>{{course.options}}
+  </p>
 </div>
 
 <h2>
@@ -52,8 +54,8 @@
     </ol>
 
 
-      <li>Overview and Setup for Git Version Control</li>
-      <ol>
+    <li>Overview and Setup for Git Version Control</li>
+    <ol>
       <li>Key concepts of source / version control systems</li>
       <li>Understand options for installing Git</li>
       <li>Using Git Bash</li>
@@ -61,26 +63,26 @@
     </ol>
 
 
-        <li>Create and Work with a Local Git Repo</li>
-        <ol>
-        <li>Understanding how Git actually works</li>
-        <li>How to initialize a new local Git repository</li>
-        <li>Learn about the states files can be in</li>
-        <li>Staging and committing files</li>
-        <li>Deleting files from projects</li>
-        <li>See how to ignore certain files</li>
-        <li>Viewing history of Git commits</li>
-      </ol>
-
-
-        <li>Synching with a remote repository</li>
-        <ol>
-        <li>Creating a remote repository</li>
-        <li>Linking a local repository to a remote repository</li>
-        <li>Pushing / Pulling changes between local to remote</li>
-        <li>Using Git clone remote to create a new local repo</li>
-        <li>Git Credential Manager</li>
-     </ol>
-
-
+    <li>Create and Work with a Local Git Repo</li>
+    <ol>
+      <li>Understanding how Git actually works</li>
+      <li>How to initialize a new local Git repository</li>
+      <li>Learn about the states files can be in</li>
+      <li>Staging and committing files</li>
+      <li>Deleting files from projects</li>
+      <li>See how to ignore certain files</li>
+      <li>Viewing history of Git commits</li>
     </ol>
+
+
+    <li>Synching with a remote repository</li>
+    <ol>
+      <li>Creating a remote repository</li>
+      <li>Linking a local repository to a remote repository</li>
+      <li>Pushing / Pulling changes between local to remote</li>
+      <li>Using Git clone remote to create a new local repo</li>
+      <li>Git Credential Manager</li>
+    </ol>
+
+
+  </ol>
