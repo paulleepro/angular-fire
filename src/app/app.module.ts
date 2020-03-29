@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
+import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +11,7 @@ import { AlertModule } from './_alert';
 
 
 // tslint:disable-next-line: quotemark
-import { NavbarComponent } from "./navbar/navbar.component";
+import { NavbarComponent } from './navbar/navbar.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CoursesListComponent } from './courses-list/courses-list.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -36,6 +37,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
@@ -45,7 +47,6 @@ import { RegisterComponent } from './register/register.component';
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { UsersModule } from './users/users.module';
-
 
 @NgModule({
   declarations: [
