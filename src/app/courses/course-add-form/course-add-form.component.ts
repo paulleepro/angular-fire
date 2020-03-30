@@ -6,26 +6,30 @@ import { CourseService } from '../services/course.service';
 import 'firebase/firestore';
 
 @Component({
-  selector: 'app-course-add-form',
-  templateUrl: './course-add-form.component.html',
-  styleUrls: ['./course-add-form.component.css']
+	selector: 'app-course-add-form',
+	templateUrl: './course-add-form.component.html',
+	styleUrls: [ './course-add-form.component.css' ]
 })
 export class CourseAddFormComponent implements OnInit {
-  authors: Author[];
-  durationUnits = ['Days', 'Weeks', 'Months'];
-  categories = ['starter', 'front-end', 'back-end'];
+	authors: Author[];
+	durationUnits = [ 'Days', 'Weeks', 'Months' ];
+	selectedFile = null;
 
-  constructor(private authorService: AuthorService, private courseService: CourseService) { }
+	constructor(private authorService: AuthorService, private courseService: CourseService) {}
 
-  ngOnInit(): void {
-    this.authorService.getAuthors().subscribe({
-      next: (authors: Author[]) => {
-        this.authors = authors;
-      }
-    });
-  }
+	ngOnInit(): void {
+		this.authorService.getAuthors().subscribe({
+			next: (authors: Author[]) => {
+				this.authors = authors;
+			}
+		});
+	}
 
-  onAddCourse(newCourse) {
-    this.courseService.addCourse(newCourse.value);
-  }
+	onFileSelected(event) {
+		this.selectedFile = event.target.files[0];
+	}
+
+	onAddCourse(newCourse) {
+		this.courseService.addCourse(newCourse.value, this.selectedFile);
+	}
 }
