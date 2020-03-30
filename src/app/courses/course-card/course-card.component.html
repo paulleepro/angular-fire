@@ -1,10 +1,13 @@
-<div class="col col-lg-4 mx-auto mb-3">
-<mat-card style="width: 15rem; height: 18rem">
-  <img src="{{course.image_url}}" alt="{{course.title}}" class="mb-3 ml-auto" mat-card-avatar mat-card-md-image>
-  <mat-card-title style="font-size: 0.9rem">{{course.title}}</mat-card-title>
-  <mat-card-content>This is a {{course.duration}} {{course.duration_unit}} course</mat-card-content>
-  <mat-card-actions>
-    <a [routerLink]="['/courses', course.id]" role="button" mat-stroked-button >View Course Details</a>
+<div class="mx-auto mb-4 ">
+<mat-card style="width: 15rem; height: 23rem; margin-right: 10px; text-align: left; text-align-last: left; ">
+  <img src="{{course.image_url}}" alt="{{course.title}}" class="mb-3 ml-5 row" mat-card-avatar mat-card-md-image>
+  <mat-card-title class="mx-auto" style="font-size: 0.9rem; margin: 0 auto;">{{course.title}}</mat-card-title>
+  <mat-card-content >
+    <!-- <p>This is a {{course.duration}} {{course.duration_unit}} course</p> -->
+    <p>{{course.short_description}}</p>
+  </mat-card-content>
+  <mat-card-actions >
+    <a mat-stroked-button [routerLink]="['/courses', course.id]" role="button" >View Course Details</a>
   </mat-card-actions>
 </mat-card>
 </div>
