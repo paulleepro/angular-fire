@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 
@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AlertModule } from './_alert';
-
 
 // tslint:disable-next-line: quotemark
 import { NavbarComponent } from './navbar/navbar.component';
@@ -41,33 +40,34 @@ import { AuthorComponent } from './authors/author/author.component';
 import { AccountsModule } from './accounts/accounts.module';
 import { CoursesModule } from './courses/courses.module';
 import { SharedModule } from './shared/shared.module';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    NotfoundComponent,
-    WelcomeComponent,
-    AboutComponent,
-    LoadingSpinnerComponent,
-    FooterComponent,
-    AuthorComponent]
-  ,
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    AlertModule,
-    AccountsModule,
-    CoursesModule,
-    UsersModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
-
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		NavbarComponent,
+		NotfoundComponent,
+		WelcomeComponent,
+		AboutComponent,
+		LoadingSpinnerComponent,
+		FooterComponent,
+		AuthorComponent
+	],
+	imports: [
+		BrowserModule,
+		SharedModule,
+		AppRoutingModule,
+		HttpClientModule,
+		BrowserAnimationsModule,
+		AlertModule,
+		AccountsModule,
+		CoursesModule,
+		UsersModule
+	],
+	providers: [
+		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+		AngularFireStorage
+	],
+	bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}
