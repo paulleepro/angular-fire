@@ -13,5 +13,4 @@ export interface Course {
 	authors: string[];
 	featured: boolean;
 	who_should_attend: string;
-	category: string;
 }
