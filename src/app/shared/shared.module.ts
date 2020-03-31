@@ -7,12 +7,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { FirebaseModule } from '../firebase/firebase.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     FormsModule,
+    HttpClientModule,
     FirebaseModule,
     ReactiveFormsModule,
     MatInputModule,
@@ -25,6 +27,7 @@ import { FirebaseModule } from '../firebase/firebase.module';
 
   ],
   exports: [FormsModule, ReactiveFormsModule, MatInputModule,
+    HttpClientModule,
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
