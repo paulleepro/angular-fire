@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 
@@ -28,33 +28,35 @@ import { CoursesModule } from './courses/courses.module';
 import { SharedModule } from './shared/shared.module';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { TeamComponent } from './team/team.component';
+import { TestimonialsComponent } from './testimonials/testimonials.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    NotfoundComponent,
-    WelcomeComponent,
-    AboutComponent,
-    LoadingSpinnerComponent,
-    FooterComponent,
-    AuthorComponent,
-    TeamComponent
-  ],
-  imports: [
-    BrowserModule,
-    SharedModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AlertModule,
-    AccountsModule,
-    CoursesModule,
-    UsersModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    AngularFireStorage
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		NavbarComponent,
+		NotfoundComponent,
+		WelcomeComponent,
+		AboutComponent,
+		LoadingSpinnerComponent,
+		FooterComponent,
+		AuthorComponent,
+		TeamComponent,
+		TestimonialsComponent
+	],
+	imports: [
+		BrowserModule,
+		SharedModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		AlertModule,
+		AccountsModule,
+		CoursesModule,
+		UsersModule
+	],
+	providers: [
+		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+		AngularFireStorage
+	],
+	bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}
