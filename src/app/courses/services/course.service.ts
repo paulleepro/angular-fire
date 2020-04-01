@@ -65,24 +65,31 @@ export class CourseService {
 	// }
 
 	addCourse(course: Course, selectedFile) {
-		let imageFile = selectedFile;
-		let name = imageFile.name;
 		let imageUrl = '../../../assets/images/desk-ready-logo-blue.png';
-		const fileRef = this.storage.ref(`images/${name}`);
-		this.storage
-			.upload(`images/${name}`, imageFile)
-			.snapshotChanges()
-			.pipe(
-				finalize(() => {
-					fileRef.getDownloadURL().subscribe((url) => {
-						alert('Upload Successful');
-						imageUrl = url;
-						course['image_url'] = imageUrl;
-						this.courseCollection.add(course);
-					});
-				})
-			)
-			.subscribe();
+		let name = 'placeholder';
+
+		if (selectedFile !== null) {
+			let imageFile = selectedFile;
+			name = imageFile.name;
+			const fileRef = this.storage.ref(`images/${name}`);
+			this.storage
+				.upload(`images/${name}`, imageFile)
+				.snapshotChanges()
+				.pipe(
+					finalize(() => {
+						fileRef.getDownloadURL().subscribe((url) => {
+							alert('Upload Successful');
+							imageUrl = url;
+							course['image_url'] = imageUrl;
+							this.courseCollection.add(course);
+						});
+					})
+				)
+				.subscribe();
+		} else {
+			course['image_url'] = imageUrl;
+			this.courseCollection.add(course);
+		}
 	}
 
 	// createUser(value, avatar){
