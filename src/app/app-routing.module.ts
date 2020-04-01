@@ -11,6 +11,7 @@ import { EditCourseResolver } from './courses/course-detail/edit-course.resolver
 import { UserLandingComponent } from './users/user-landing/user-landing.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { AccountInfoComponent } from './accounts/account-info/account-info.component';
+import { TeamComponent } from './team/team.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
 
   {
     path: "about", component: AboutComponent
+  },
+
+  {
+    path: "team", component: TeamComponent
   },
 
   {
