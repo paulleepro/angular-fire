@@ -22,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 		MatRadioModule,
 		MatCardModule,
 		MatListModule,
-		MatButtonModule
+		MatButtonModule,
+		HttpClientModule
 	],
 	exports: [
 		FormsModule,
@@ -33,7 +34,8 @@ import { HttpClientModule } from '@angular/common/http';
 		MatCardModule,
 		MatListModule,
 		MatButtonModule,
-		FirebaseModule
+		FirebaseModule,
+		HttpClientModule
 	]
 })
 export class SharedModule {}
