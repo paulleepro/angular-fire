@@ -1,75 +1,125 @@
-<div class="form-container">
+<div class="container mt-5">
+  <div class="card auth-card mx-auto">
+    <!-- Default form login -->
+    <form #form1="ngForm" class="text-center border border-light p-4">
+      <p class="h4 mb-4 text-left" *ngIf="isSignIn">Sign in</p>
 
-  <!-- Default form login -->
-  <form #form1="ngForm" class="text-center border border-light p-5">
+      <p class="h4 mb-4" *ngIf="isRegister">Register</p>
 
-    <p class="h4 mb-4" *ngIf="isSignIn">Sign in</p>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="email-group">@</span>
+        </div>
+        <input
+          type="email"
+          required
+          name="email"
+          class="form-control"
+          placeholder="E-mail"
+          id="defaultLoginFormEmail"
+          aria-label="E-mail"
+          aria-describedby="email-group"
+          [(ngModel)]="userlogin.email"
+        />
+      </div>
 
-    <p class="h4 mb-4" *ngIf="isRegister">Register</p>
+      <!-- Password -->
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="password-group">@</span>
+        </div>
+        <input
+          type="password"
+          #pw1
+          required
+          name="password"
+          class="form-control"
+          placeholder="Password"
+          id="defaultLoginFormPassword"
+          aria-label="Password"
+          aria-describedby="password-group"
+          [(ngModel)]="userlogin.password"
+        />
+      </div>
 
-    <!-- Email -->
-    <input type="email" required name="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail"
-      [(ngModel)]="userlogin.email">
+      <!-- Password -->
+      <div class="input-group mb-3" *ngIf="isRegister">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="confirm-password-group">@</span>
+        </div>
+        <input
+          type="password"
+          #pw2
+          required
+          class="form-control"
+          placeholder="Password Confirmation"
+          id="confirmPassword"
+          aria-label="Password"
+          aria-describedby="confirm-password-group"
+        />
+      </div>
 
-
-    <!-- Password -->
-    <input type="password" #pw1 required name="password" id="defaultLoginFormPassword" class="form-control mb-4"
-      placeholder="Password" [(ngModel)]="userlogin.password">
-
-    <!-- Password -->
-    <input *ngIf="isRegister" #pw2 required type="password" id="confirmPassword" class="form-control mb-4"
-      placeholder="Password Confirmation">
-
-    <div *ngIf="isSignIn" class="d-flex justify-content-around">
-      <div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" name="" id="remember-check" value="checkedValue" checked>
-            Remember me
-          </label>
+      <div *ngIf="isSignIn" class="">
+        <div class="mb-2 text-left">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                name=""
+                id="remember-check"
+                value="checkedValue"
+                checked
+              />
+              Remember me
+            </label>
+          </div>
+        </div>
+        <div *ngIf="isSignIn" class="text-right">
+          <!-- Sign in button -->
+          <div>
+            <button
+              (click)="login()"
+              name=""
+              id="signin-button"
+              class="btn btn-primary px-4"
+              href="#"
+              [disabled]="!form1.valid"
+              role="button"
+            >
+              Sign in
+            </button>
+          </div>
         </div>
       </div>
-      <div>
+    </form>
+    <!-- Register -->
+    <div class="card-footer text-center" *ngIf="isSignIn">
+      Not signed up?
+      <a (click)="showRegister()" href="/login#" class="register-link p-0">Register</a>
+      <div class="mt-2">
         <!-- Forgot password -->
-        <a href="">Forgot password?</a>
-      </div>
-
-      <div *ngIf="isSignIn" class="d-flex justify-content-around">
-        <!-- Sign in button -->
-        <div>
-
-          <button (click)="login()" name="" id="signin-button" class="btn btn-primary" href="#"
-            [disabled]="!form1.valid" role="button">Sign in
-          </button>
-        </div>
+        <a href="" class="register-link">Forgot password?</a>
       </div>
     </div>
-
-    <!-- Register -->
-    <p *ngIf="isSignIn">Not signed up?
-      <a (click)="showRegister()" class="btn">Register</a>
-    </p>
 
     <!-- Add logic to disable button if passwords do not match -->
-    <div *ngIf="isRegister" (click)="signup()">
+    <div class="card-footer text-center" *ngIf="isRegister" (click)="signup()">
       <a name="" id="" class="btn btn-primary" href="#" role="button">Register</a>
     </div>
-  </form>
-  <!-- Social login -->
-  <p>or sign in with:</p>
-  <div style="background-color:blueviolet">
-    <a (click)="loginFb()" type="button" class="light-blue-text mx-2">
-      <img class="s-logo" src="../../assets/images/facebook.svg" alt="" />
-    </a>
 
-    <a id="google" (click)="loginGoogle()" type="button" class="light-blue-text mx-2">
-      <img class="s-logo" src="../../assets/images/google.svg" alt="google-logo">
-      <span>Login With Google</span>
-    </a>
+    <!-- Social login -->
+    <div class="text-center firebase-auth">
+      <a (click)="loginFb()" type="button" class="light-blue-text mx-2">
+        <img class="s-logo" src="../../assets/images/facebook.svg" alt="" />
+      </a>
+
+      <a id="google" (click)="loginGoogle()" type="button" class="light-blue-text mr-4">
+        <img class="s-logo" src="../../assets/images/google.svg" alt="google-logo" />
+      </a>
+    </div>
   </div>
-
   <!-- Default form login -->
-
 
   <!-- <div *ngIf="!showSpinner; else elseBlock">
     <span class="error" *ngIf="error">{{ error }}</span>
@@ -85,3 +135,4 @@
     </button>
 
  -->
+</div>
