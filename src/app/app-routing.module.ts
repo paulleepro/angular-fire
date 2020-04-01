@@ -8,6 +8,9 @@ import { redirectUnauthorizedTo, canActivate } from '@angular/fire/auth-guard';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AccountInfoComponent } from './accounts/account-info/account-info.component';
 import { TeamComponent } from './team/team.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { UserEditComponent } from './users/user-edit/user-edit.component';
 
 const redirectUnauthorizedToLanding = redirectUnauthorizedTo(['login']);
 
@@ -34,6 +37,22 @@ const routes: Routes = [
 
   },
 
+  {
+    path: "users",
+    component: UserListComponent,
+    canActivate: [AngularFireAuthGuard],
+    ...canActivate(redirectUnauthorizedToLanding)
+  },
+
+  {
+    path: "users/:id", component: UserDetailComponent,
+    canActivate: [AngularFireAuthGuard],
+    canActivateChild: [AngularFireAuthGuard],
+    children: [
+      { path: 'edit', component: UserEditComponent }
+    ],
+
+  },
 
   {
     path: "courses", //Angular 8 Notation with Promise
