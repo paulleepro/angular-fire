@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 
@@ -16,8 +16,6 @@ import { AboutComponent } from './about/about.component';
 
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { environment } from '../environments/environment';
 
 import { FooterComponent } from './footer/footer.component';
 import { JwtInterceptor } from './services/jwt.interceptor';

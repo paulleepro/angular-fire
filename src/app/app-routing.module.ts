@@ -8,6 +8,7 @@ import { redirectUnauthorizedTo, canActivate } from '@angular/fire/auth-guard';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AccountInfoComponent } from './accounts/account-info/account-info.component';
 import { TeamComponent } from './team/team.component';
+import { UserResolver } from './users/services/user.resolver';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
 
   {
     path: "users/:id", component: UserDetailComponent,
+    resolve: { data: UserResolver },
     canActivate: [AngularFireAuthGuard],
     canActivateChild: [AngularFireAuthGuard],
     children: [

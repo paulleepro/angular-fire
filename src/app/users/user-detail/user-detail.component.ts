@@ -16,8 +16,15 @@ export class UserDetailComponent implements OnInit {
     private service: UserService) { }
 
   ngOnInit() {
-    const id = +this.activatedRoute.snapshot.paramMap.get('id');
-    this.service.getUser(id).subscribe((user) => this.user = user);
+    this.activatedRoute.data.subscribe(routeData => {
+      const data = routeData['data'];
+      if (data) {
+        this.user = data.payload.data();
+        this.user.id = data.payload.id;
+      }
+    })
+
+    // this.service.getUser(id).subscribe((user) => this.user = user);
   }
 }
 
