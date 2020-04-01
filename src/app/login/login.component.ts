@@ -14,7 +14,7 @@ import { AlertService } from '../_alert';
   animations: [moveIn()],
   host: { '[@moveIn]': '' }
 })
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit {
   isSignIn = true;
   isRegister = false;
   email: string;
@@ -36,16 +36,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
     protected alert: AlertService
   ) {
 
-    // this.afAuth.authState.subscribe(auth => {
-    //   if (auth) {
-    //     // this.router.navigateByUrl(this.return);
-    //   }
-    // });
   }
 
   ngOnInit() {
     // Get the query params
-    console.log("in ngOnOnit login");
+    // console.log("in ngOnOnit login");
     // this.route.queryParams
     //   .subscribe(params => this.return = params['return'] || '/welcome');
   }
@@ -69,16 +64,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
     // this.authService.logout();
   }
 
-
-  ngAfterViewInit() {
-  }
-
   loginFb() {
-    this.showSpinner = true;
-    localStorage.setItem('showSpinner', 'true');
     this.afAuth.auth.signInWithRedirect(this.facebookAuthProvider);
     this.afAuth.auth.getRedirectResult().then(result => {
       if (result.user) {
+        console.log("In Facebook callback");
+
         this.showSpinner = true;
         localStorage.setItem('showSpinner', 'true');
         this.router.navigate(['/account']);

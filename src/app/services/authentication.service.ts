@@ -1,5 +1,4 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
-//router for after user signs out
 import { Router } from '@angular/router';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { auth } from 'firebase/app';
@@ -16,6 +15,7 @@ import { AlertService } from '../_alert/alert.service';
 export class AuthenticationService {
 
   public user$: Observable<User>;
+  private isUserLoggedIn: boolean = false;
 
   // userData: Observable<firebase.User>;
   currentUser;
@@ -27,19 +27,26 @@ export class AuthenticationService {
     this.user$ = afAuth.authState.pipe(
       switchMap(user => {
         if (user) { // get info if it exists for a user
+          this.isUserLoggedIn = true;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         }
         // tslint:disable-next-line: one-line
         else { // or simply return Obs of null
+          this.isUserLoggedIn = false;
           return of(null);
         }
       })
     );
   }
 
+  isLoggedIn() {
+    return this.isUserLoggedIn;
+  }
+
   async googleSignIn() {
     const provider = new auth.GoogleAuthProvider();
     const credential = await this.afAuth.auth.signInWithPopup(provider);
+    this.isUserLoggedIn = true;
     return this.updateUserData(credential.user);
   }
 
@@ -61,6 +68,7 @@ export class AuthenticationService {
 
   /* Sign out */
   async signOut() {
+    this.isUserLoggedIn = false;
     await this.afAuth
       .auth
       .signOut();
@@ -74,6 +82,7 @@ export class AuthenticationService {
       .createUserWithEmailAndPassword(email, password)
       .then(res => {
         console.log('Successfully signed up!', res);
+        this.isUserLoggedIn = true;
       })
       .catch(error => {
         console.log('Something is wrong:', error.message);
@@ -88,6 +97,7 @@ export class AuthenticationService {
       .then(res => {
         // TODO: store off ths res info
         console.log('Successfully signed in!');
+        this.isUserLoggedIn = true;
         this.updateUserData(res.user);
 
         // TODO put in logic to verify email address

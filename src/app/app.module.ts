@@ -28,6 +28,7 @@ import { CoursesModule } from './courses/courses.module';
 import { SharedModule } from './shared/shared.module';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { TeamComponent } from './team/team.component';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,7 @@ import { TeamComponent } from './team/team.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    AngularFireStorage
+    AngularFireStorage, AngularFireAuthGuard
   ],
   bootstrap: [AppComponent]
 })

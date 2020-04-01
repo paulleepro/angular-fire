@@ -3,16 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
-import { CoursesListComponent } from './courses/courses-list/courses-list.component';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { redirectUnauthorizedTo, canActivate } from '@angular/fire/auth-guard';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { CourseAddFormComponent } from './courses/course-add-form/course-add-form.component';
-import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
-import { EditCourseResolver } from './courses/course-detail/edit-course.resolver';
-import { UserLandingComponent } from './users/user-landing/user-landing.component';
-import { AuthGuard } from './services/guards/auth.guard';
 import { AccountInfoComponent } from './accounts/account-info/account-info.component';
 import { TeamComponent } from './team/team.component';
 
+const redirectUnauthorizedToLanding = redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
   { path: "", redirectTo: "/welcome", pathMatch: "full" },
@@ -32,7 +29,8 @@ const routes: Routes = [
   {
     path: "account",
     component: AccountInfoComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AngularFireAuthGuard],
+    ...canActivate(redirectUnauthorizedToLanding)
 
   },
 
